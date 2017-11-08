@@ -1,23 +1,24 @@
 <?php
-class compte
+class Acount
 {
-	protected $id_compte,
-	          $numclient,
+	protected $idacount,
+	          $numcustomer,
 	          $debit,
 	          $credit,
 	          $type,
 	          $sold;
 
-public function __construct(array $info_compte)
+public function __construct(array $info_acount)
   {
 
-  	 $this->hydrater($info_compte);
+  	 $this->hydrater($info_acount);
+  	 $this->sold=$this->débit-$this->credit;
    }   
 
   //Getters
   //------------------------------------------------------------------------
-  public function id_compte(){ return $this->id_compte;}
-  public function numclient(){ return $this->numclient;}
+  public function idacounte(){ return $this->idacount;}
+  public function numcustomer(){ return $this->numcustomer;}
   public function debit(){ return $this->debit;}
   public function credit(){ return $this->credit;}
   public function sold(){ return $this->sold;}
@@ -25,12 +26,12 @@ public function __construct(array $info_compte)
   
   //Setters
   //-------------------------------------------------------------------------
- public function setId_compte($id_compte)
+ public function setIdacounte($idacount)
  {
- 	$id_compte=(int)$id_compte;
-    if($id_compte>0) 
+ 	$idacount=(int)$idacount;
+    if($idacount>0) 
     {
-    	$this->id_compte=$id_compte;
+    	$this->idacount=$idacount;
     }  
     else {
           trigger_error('id invalide ', E_USER_WARNING);
@@ -58,6 +59,28 @@ public function __construct(array $info_compte)
   	else {trigger_error('type invalide', E_USER_WARNING);
      	  return;
         }
+  }
+  public function setCredit($credit)
+  {
+  	if(is_flaot($credit))
+  	{
+  		$this->credit=$credit;
+  	}
+  	else {trigger_error('valeur de crédit  invalide', E_USER_WARNING);
+     	  return;
+        }
+   
+  } 
+  public function setDebit($debit)
+  {
+  	if(is_flaot($debit))
+  	{
+  		$this->debit=$debit;
+  	}
+  	else {trigger_error('valeur de debit  invalide', E_USER_WARNING);
+     	  return;
+        }
+   
   }
 
 
