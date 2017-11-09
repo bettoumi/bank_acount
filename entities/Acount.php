@@ -16,7 +16,7 @@ public function __construct(array $info_acount)
   //Getters
   //------------------------------------------------------------------------
   public function id(){ return $this->id;}
-  public function numcustomer(){ return $this->numcustomer;}
+  public function namecustomer(){ return $this->namecustomer;}
  
   public function sold(){ return $this->sold;}
   public function type(){ return $this->type;}
@@ -37,8 +37,8 @@ public function __construct(array $info_acount)
   }
   public function setNamecustomer($namecustomer)
  {
- 	$namceustomer=(int)$namecustomer;
-    if(!is_string($namecustomer)) 
+ 	
+    if(is_string($namecustomer)) 
     {
     	$this->namecustomer=$namecustomer;
     }  
@@ -59,7 +59,7 @@ public function __construct(array $info_acount)
   }
   public function setSold($sold)
   {
-  	if(is_float($sold))
+  	if(is_numeric($sold))
   	{
   		$this->sold=$sold;
   	}
@@ -67,7 +67,22 @@ public function __construct(array $info_acount)
      	  return;
         }
   }
+
+  //hydater------------------------------------------------------------
+//--------------------------------------------------------------------
+public function hydrater(array $info_acount)
+{
+  foreach ($info_acount as $acount=> $value)
+   {
+    $setters='set'.ucfirst($acount);
+    if(method_exists($this, $setters))
+    {
+      $this->$setters($value);
+    }
+
+  }}
   
-
-
 }
+
+
+?>

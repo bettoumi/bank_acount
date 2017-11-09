@@ -1,5 +1,5 @@
 <?php
-require 'dbconnexion/db_connexion.php';
+require 'dbconnxion/db_connexion.php';
 class Acount_manager
 {
 
@@ -36,7 +36,7 @@ class Acount_manager
      
  
        $acc=[];
-       $req=$this->db->query('SELECT idacount,  namecustomer, type,  sold  FROM acount') ;
+       $req=$this->db->query('SELECT id,  namecustomer, type,  sold  FROM acount') ;
         $allacounts=$req->fetchAll(PDO::FETCH_ASSOC);
           
 
@@ -49,18 +49,18 @@ class Acount_manager
           }
           
           return $acc;
-      
+     
 
     }
 
    //delete acount  from data base
   //------------------------------------------------------------------------
-  public  function delte_acount( $info)
+  public  function delete_acount( $id)
   {
        // var_dump($info);
      $req= $this->db->prepare('DELETE  FROM acount WHERE  id=:id');
      $req->execute([
-      'id'=>$info] );
+      'id'=>$id] );
    
   }
 
@@ -87,7 +87,7 @@ class Acount_manager
 //----------------------------------------------------------------------------------
   public function payment($id, $amount)
   {
-    $req=$this->db->prepare('UPDATE acount SET sold+=:amount WHERE id=:id');
+    $req=$this->db->prepare('UPDATE acount SET sold = sold + :amount WHERE id=:id');
     $req->bindValue('id', $id, PDO::PARAM_INT);
     $req->bindValue('amount', $amount);
     $req->execute();
@@ -97,7 +97,8 @@ class Acount_manager
 //----------------------------------------------------------------------------------
  public function withdrawal($id, $amount)
   {
-    $req=$this->db->prepare('UPDATE acount SET sold-=:amount WHERE id=:id');
+    var_dump($amount);
+    $req=$this->db->prepare('UPDATE acount SET sold= sold-:amount WHERE id=:id');
     $req->bindValue('id', $id, PDO::PARAM_INT);
     $req->bindValue('amount', $amount);
     $req->execute();

@@ -13,9 +13,14 @@
         <link rel="stylesheet" href="../assets/css/normalize.css">
         <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
         <link rel="stylesheet" href="../assets/css/main.css">
-        <script src="../assets/js/vendor/modernizr-2.8.3.min.js"></script>
+        <!-- <script src="../assets/js/vendor/modernizr-2.8.3.min.js"></script> -->
     </head>
     <body>
-    <header class="entete"  >
-      <h1>Gestion de comptes bancaires</h1>
+    <header class="entete row"   >
+      <h1 class="col-12 col-md-6 col-lg-6">Gestion de comptes bancaires</h1>
+      <div class="btn col-12 col-md-6 col-lg-6 ">
+      <button  type="button" data-toggle="collapse" data-target="#acount" aria-expanded="false" aria-controls="collapseExample">
+           ajouetr un compte
+        </button>
+        </div>
     </header>
