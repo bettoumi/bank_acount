@@ -69,6 +69,24 @@ if( isset($_POST['withdrawal'] ) and isset($_POST['amount']) and !empty($_POST['
 
 }
 
+//// select acounts of transfert operation from  data base  
+// -----------------------------------------------------------------------------
+
+if( isset($_POST['transfert'] ) and
+    isset($_POST['amount']) and !empty($_POST['amount'] )
+    and isset($_POST['id']) and !empty($_POST['id'])
+    and isset($_POST['iddist']) and !empty($_POST['iddist'])
+
+	)
+{
+   $amount=(float)htmlspecialchars($_POST['amount']);
+   $id=(int)htmlspecialchars($_POST['id']);
+   $iddist=(int)htmlspecialchars($_POST['ididst']);
+   
+
+}
+
+
 
 include "../views/indexVue.php";
  ?>

@@ -1,8 +1,14 @@
-<div class="modal fade" id="withdrawalModal<?php echo $acount->id();?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+<!-- withdrawal   modal -->
+<!-- ================================================================= -->
+<button type='button'  class="btn btn-outline-danger col-12 col-md-6 col-lg-4" data-toggle="modal" data-target="#withdrawalModal<?php echo $acount->id();?>">retrait</button>
+
+
+<div class="modal fade" id="withdrawalModal<?php echo $acount->id();?>" tabindex="-1" role="dialog" aria-labelledby="ModalLabel<?php echo $acount->id();?>" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Retrait</h5>
+        <h5 class="modal-title" id="ModalLabel<?php echo $acount->id();?>">Retrait</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>

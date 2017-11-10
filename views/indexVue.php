@@ -16,20 +16,20 @@
     <h3 class="card-title">sold:  <?php echo $acount->sold();?></h3>
 
     <div class="row  justify-content-around" >
-    <a href="#" class="btn btn-outline-danger col-12 col-md-6 col-lg-4" data-toggle="modal" data-target="#withdrawalModal<?php echo $acount->id();?>">retrait</a>
-    <a href="#" class="btn btn-outline-danger col-12 col-md-6 col-lg-4" data-toggle="modal" data-target="#payModal<?php echo $acount->id();?>" >versement</a>
-    <a href="#" class="btn btn-outline-danger col-12 col-md-6 col-lg-4">virement</a>
+    
+      <?php require 'paymentmodal.php';
+
+          require 'withdrawalmodal.php';
+          require 'transfermodal.php';
+    ?>
+
+    
     <form action=""  class="col-12 col-md-6 col-lg-12 mt-2 " method="post">
       <input type='hidden' value="<?php echo $acount->id();?>" name="id">
       <input type="submit" class="btn btn-outline-danger"  name="delete" value="supprimer">
    </form>
    </div>
-    <?php include_once 'paymentmodal.php';
-
-          include_once 'withdrawalmodal.php';
-          include_once 'transfermodal.php';
-    ?>
-
+   
   </div>
 </div>
 <?php

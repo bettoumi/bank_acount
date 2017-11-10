@@ -104,6 +104,38 @@ class Acount_manager
     $req->execute();
   }
 
+
+// select all acount diffrent of acount(id)
+// ================================================================
+public function searchallotheracount($id)
+{
+    $acc=[];
+       $req=$this->db->prepare('SELECT id,  namecustomer, type,  sold  FROM acount WHERE id!=:id') ;
+       $req->bindValue('id', $id, PDO::PARAM_INT);
+         $req->execute();
+
+        $allacounts=$req->fetchAll(PDO::FETCH_ASSOC);
+          
+
+        foreach ($allacounts as $acount )
+         {
+               
+          
+             $acc[]=new Acount($acount);
+           
+          }
+          
+          return $acc;
+
+
+}
+  public function money_transfer($idac1, $idac2, $amount)
+  {
+
+  }
+
+
+
  public function setDb($db)
  {
     $this->db=$db;

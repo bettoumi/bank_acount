@@ -1,10 +1,11 @@
 
+<button  class="btn btn-outline-danger col-12 col-md-6 col-lg-4" data-toggle="modal" data-target="#payModal<?php echo $acount->id();?>" >versement</button>
 
-<div class="modal fade" id="payModal<?php echo $acount->id();?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="payModal<?php echo $acount->id();?>" tabindex="-1" role="dialog" aria-labelledby="ModalLabel<?php echo $acount->id();?>" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Versement</h5>
+        <h5 class="modal-title" id="ModalLabel<?php echo $acount->id();?>">Versement</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
