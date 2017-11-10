@@ -9,7 +9,7 @@
 	  
 ?>
 
-<div class="card card-inverse col-12 col-md-6 col-lg-4" style="background-color:rgb(18,80,93) ; border-color: #333;">
+<div class="card card-inverse col-12 col-md-6 col-lg-4" style="background-color:rgb(18,80,93) ; border-color: #333; max-width: 25em;">
   <div class="card-block">
     <h3 class="card-title">compte num: <?php echo $acount->id();?></h3>
     <h3 class="card-title">client:  <?php echo $acount->namecustomer();?></h3>
