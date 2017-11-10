@@ -81,9 +81,11 @@ if( isset($_POST['transfert'] ) and
 {
    $amount=(float)htmlspecialchars($_POST['amount']);
    $id=(int)htmlspecialchars($_POST['id']);
-   $iddist=(int)htmlspecialchars($_POST['ididst']);
-   
+   $iddist=(int)htmlspecialchars($_POST['iddist']);
+   $manager_acount->money_transfer($id, $iddist, $amount);
 
+ var_dump($_POST);
+ header('Location:');
 }
 
 

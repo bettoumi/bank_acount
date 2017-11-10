@@ -129,8 +129,17 @@ public function searchallotheracount($id)
 
 
 }
-  public function money_transfer($idac1, $idac2, $amount)
+  public function money_transfer($id, $iddist, $amount)
   {
+   
+    $req=$this->db->prepare('UPDATE acount SET sold=sold+:amount WHERE id=:iddist');
+    $req->bindValue('iddist', $iddist, PDO::PARAM_INT);
+    $req->bindValue('amount', $amount);
+    $req->execute();
+    $req2=$this->db->prepare('UPDATE acount SET sold=sold-:amount WHERE id=:id');
+    $req2->bindValue('id', $id, PDO::PARAM_INT);
+    $req2->bindValue('amount', $amount);
+    $req2->execute();
 
   }
 

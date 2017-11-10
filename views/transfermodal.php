@@ -2,11 +2,11 @@
 <!-- ================================================================= -->
 <button   data-toggle="modal" class="btn btn-outline-danger col-12 col-md-6 col-lg-4" data-target="#transfertModal<?php echo $acount->id();?>">virement</button>
 
-<div class="modal fade" id="transfertModal<?php echo $acount->id();?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="transfertModal<?php echo $acount->id();?>" tabindex="-1" role="dialog" aria-labelledby="ModalLabel<?php echo $acount->id();?>" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">virement</h5>
+        <h5 class="modal-title" id="ModalLabel<?php echo $acount->id();?>">virement</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -19,19 +19,23 @@
             <input type='hidden' name='id' value='<?php echo $acount->id();?>'>
           </div>
           <div class="form-group">
-          <select name="iddist">
-             <!-- <option value="choisir un compte" selected disabled>choisir un compte</option> -->
+          <select  class="text-warning" name="iddist">
+             <!-- <option value="" selected disabled>choisir un compte</option> -->
             <?php 
+            $id1=$acount->id();
              foreach ($allcount  as $act ) 
              {
-                  if($act->id()!== $acount->id())
-               ?>
+                 var_dump($act);
+                  if($act->id()!== $id1)
+                  {
+               ?>   
                 
                 
                 
-                 <option value="<?php echo $act->id(); ?>"><?php echo $act->namecustomer(); ?></option>
+                 <option  class="text-warning" value="<?php echo $act->id(); ?>"><?php echo $act->namecustomer(); ?></option>
                 
               <?php  
+              }
              }
              ?>
 
