@@ -1,6 +1,6 @@
 <?php
 require 'dbconnxion/db_connexion.php';
-class Acount_manager
+class AcountManager
 {
 
 	protected $db;
@@ -14,7 +14,7 @@ class Acount_manager
 
    // add acount in data base
    // -----------------------------------------------------------------------
-   public function add_acount(Acount $acount)
+   public function add_Acount(Acount $acount)
    {   
           
 
@@ -31,7 +31,7 @@ class Acount_manager
 
     // Select all acount in data base
    //------------------------------------------------------------------------
- public function selec_allacount() 
+ public function selec_Allacount() 
    {
      
  
@@ -55,7 +55,7 @@ class Acount_manager
 
    //delete acount  from data base
   //------------------------------------------------------------------------
-  public  function delete_acount( $id)
+  public  function delete_Acount( $id)
   {
        // var_dump($info);
      $req= $this->db->prepare('DELETE  FROM acount WHERE  id=:id');
@@ -66,7 +66,7 @@ class Acount_manager
 
   //select a acount from data base
 //----------------------------------------------------------------------------------
-  public function select_acount($info) 
+  public function select_Acount($info) 
   {
      if( is_int($info))
      {
@@ -83,12 +83,13 @@ class Acount_manager
            
  
   } 
- 
 
+ //Update information of acount in data base
+ //--------------------------------------------------------------------------------
   
- public function update_acount($acount)
+ public function update_Acount($acount)
  {
-   var_dump($acount->sold());
+   
     $req=$this->db->prepare('UPDATE acount SET  namecustomer=:namecustomer, sold=:sold, type=:type WHERE id=:id') ;
 
       $req->bindValue('id', $acount->id(), PDO::PARAM_INT );
@@ -108,4 +109,4 @@ class Acount_manager
 
 }
 $db=connex_bdd();
-$manager_acount=new Acount_manager($db);
+$manager_Acount=new AcountManager($db);

@@ -70,7 +70,7 @@ public function __construct(array $info_acount)
 
   // add money method
   // -------------------------------------------------------------------------------
-    public function add_money($amount)
+    public function add_Money($amount)
     {
       if(is_numeric($amount))
       {
@@ -79,7 +79,7 @@ public function __construct(array $info_acount)
     }
   // remove money method
   // -------------------------------------------------------------------------------
-    public function remove_money($amount)
+    public function remove_Money($amount)
     {
       if(is_numeric($amount))
       {

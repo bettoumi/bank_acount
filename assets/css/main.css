@@ -105,10 +105,17 @@ textarea {
 .entete
  {
     background-color: rgb(18,80,93);
-    height:  100px;
+    max-height:  150px;
     
  }
-#exampleModalLabel
+ .titre
+ {
+    font-size: 2em;
+    margin:auto;
+    color: ;
+
+ }
+#exampleModalLabel, .titre
 
 {
     color: rgba(217,83,79,0.6);
@@ -136,6 +143,13 @@ textarea {
 /* ##################################################################### */
 /* Medium devices (desktops, 992px and up) */
 @media (min-width: 992px) {
+
+    .titre
+ {
+    font-size: 3em;
+    
+
+ }
 
 }
 

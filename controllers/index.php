@@ -14,14 +14,15 @@ if(isset($_POST['addacount']) AND  isset($_POST['namecustomer']) AND !empty($_PO
   isset($_POST['type']) AND !empty($_POST['type'] ) )
 {
    $acount=new Acount($_POST);
-   $manager_acount->add_acount($acount);
+   $manager_Acount->add_Acount($acount);
    header('Location:');
 
 }
 //recive all informations for acount from data base
 //------------------------------------------------------------------------------
 
-$allcount=$manager_acount->selec_allacount();
+	$allcount=$manager_Acount->selec_Allacount();
+
 
 //// delette acount from data base 
 // -----------------------------------------------------------------------------
@@ -32,7 +33,7 @@ $allcount=$manager_acount->selec_allacount();
 	 	
       $id=(int)$_POST['id'] ;
       
-       $manager_acount->delete_acount($id) ; 
+       $manager_Acount->delete_Acount($id) ; 
          header('Location:');
 
    } 
@@ -48,12 +49,12 @@ if( isset($_POST['pay'] ) and isset($_POST['amount']) and !empty($_POST['amount'
 	   
 	  $amount= (float)htmlspecialchars($_POST['amount']);
       $id=(int)htmlspecialchars($_POST['id']);
-      var_dump($_POST);
-       $acount=$manager_acount->select_acount($id);
-       var_dump($acount);
-     	$acount->add_money($amount);
    
- 	 $manager_acount->update_acount($acount);
+       $acount=$manager_Acount->select_Acount($id);
+       
+     	$acount->add_Money($amount);
+   
+ 	 $manager_Acount->update_Acount($acount);
       // $manager_acount->payment($id, $amount);
        header('Location:');
 
@@ -70,10 +71,10 @@ if( isset($_POST['withdrawal'] ) and isset($_POST['amount']) and !empty($_POST['
    $amount=(float)htmlspecialchars($_POST['amount']);
    $id=(int)htmlspecialchars($_POST['id']);
      var_dump($_POST);
-     $acount=$manager_acount->select_acount($id);
-     $acount->remove_money($amount);
+     $acount=$manager_Acount->select_Acount($id);
+     $acount->remove_Money($amount);
    
- 	 $manager_acount->update_acount($acount);
+ 	 $manager_Acount->update_Acount($acount);
     header('Location:');
 
 }
@@ -93,17 +94,16 @@ if( isset($_POST['transfert'] ) and
     $acount1= ($id);
    $iddist=(int)htmlspecialchars($_POST['iddist']);
      
-      $acount2=$manager_acount->select_acount($iddist);
-      $acount1=$manager_acount->select_acount($id);
+      $acount2=$manager_Acount->select_Acount($iddist);
+      $acount1=$manager_Acount->select_Acount($id);
 
-     $acount1->remove_money($amount);
-   	 $manager_acount->update_acount($acount1);
-   	 $acount2->add_money($amount);
-   	 $manager_acount->update_acount($acount2);
+     $acount1->remove_Money($amount);
+   	 $manager_Acount->update_Acount($acount1);
+   	 $acount2->add_Money($amount);
+   	 $manager_Acount->update_Acount($acount2);
 
-   // $manager_acount->money_transfer($id, $iddist, $amount);
+   
 
- var_dump($_POST);
  header('Location:');
 }
 

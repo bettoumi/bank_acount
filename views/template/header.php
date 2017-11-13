@@ -16,8 +16,9 @@
         <!-- <script src="../assets/js/vendor/modernizr-2.8.3.min.js"></script> -->
     </head>
     <body>
-    <header class="entete row"   >
-      <h1 class="col-12 col-md-6 col-lg-6">Gestion de comptes bancaires</h1>
+      <!--  header of the page -->
+    <header class="entete row pl-2">
+      <h1 class="titre col-12 col-md-6 col-lg-6">Gestion de comptes bancaires</h1>
       <div class="btn col-12 col-md-6 col-lg-6 ">
       <button  type="button" data-toggle="collapse" data-target="#acount" aria-expanded="false" aria-controls="collapseExample">
            ajouetr un compte
