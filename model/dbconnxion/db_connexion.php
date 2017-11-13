@@ -4,7 +4,7 @@ function connex_bdd()
 
         {
 
-            $bdd = new PDO('mysql:host=localhost; dbname=compte_bancaire; charset=utf8', 'root', 'sahbia2017');
+            $bdd = new PDO('mysql:host=localhost; dbname=bank_acounts; charset=utf8', 'root', 'sahbia2017');
 
         }
 

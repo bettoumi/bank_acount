@@ -59,7 +59,7 @@ public function __construct(array $info_acount)
   }
   public function setSold($sold)
   {
-  	if(is_numeric($sold))
+  	if(is_numeric($sold) and $sold>0)
   	{
   		$this->sold=$sold;
   	}

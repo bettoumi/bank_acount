@@ -13,9 +13,21 @@ spl_autoload_register('loadclass');
 if(isset($_POST['addacount']) AND  isset($_POST['namecustomer']) AND !empty($_POST['namecustomer'] ) AND isset($_POST['sold']) AND !empty($_POST['sold'] ) AND
   isset($_POST['type']) AND !empty($_POST['type'] ) )
 {
-   $acount=new Acount($_POST);
+     
+     $infoAcount=["namecustomer"=>htmlspecialchars($_POST['namecustomer']),
+                  "sold"=>htmlspecialchars($_POST['sold']),
+                  "type"=>htmlspecialchars($_POST['type'])
+                
+
+     ];
+
+     
+     
+
+
+   $acount=new Acount($infoAcount);
    $manager_Acount->add_Acount($acount);
-   header('Location:');
+    header('Location:');
 
 }
 //recive all informations for acount from data base
