@@ -31,7 +31,7 @@ if(isset($_POST['addacount']) AND  isset($_POST['namecustomer']) AND !empty($_PO
    if( isset($_POST['id'] ) and isset($_POST['delete']))
 	 { 
 	 	
-      $id=(int)$_POST['id'] ;
+      $id=(int)htmlspecialchars($_POST['id']) ;
       
        $manager_Acount->delete_Acount($id) ; 
          header('Location:');
