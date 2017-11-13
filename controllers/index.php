@@ -39,6 +39,7 @@ $allcount=$manager_acount->selec_allacount();
 
 //// payment money in a acount  
 // -----------------------------------------------------------------------------
+
 if( isset($_POST['pay'] ) and isset($_POST['amount']) and !empty($_POST['amount'] )
     and isset($_POST['id']) and !empty($_POST['id'])
 
@@ -47,8 +48,13 @@ if( isset($_POST['pay'] ) and isset($_POST['amount']) and !empty($_POST['amount'
 	   
 	  $amount= (float)htmlspecialchars($_POST['amount']);
       $id=(int)htmlspecialchars($_POST['id']);
-
-      $manager_acount->payment($id, $amount);
+      var_dump($_POST);
+       $acount=$manager_acount->select_acount($id);
+       var_dump($acount);
+     	$acount->add_money($amount);
+   
+ 	 $manager_acount->update_acount($acount);
+      // $manager_acount->payment($id, $amount);
        header('Location:');
 
 }
@@ -63,9 +69,12 @@ if( isset($_POST['withdrawal'] ) and isset($_POST['amount']) and !empty($_POST['
 
    $amount=(float)htmlspecialchars($_POST['amount']);
    $id=(int)htmlspecialchars($_POST['id']);
-
-  $manager_acount->withdrawal($id, $amount);
-   header('Location:');
+     var_dump($_POST);
+     $acount=$manager_acount->select_acount($id);
+     $acount->remove_money($amount);
+   
+ 	 $manager_acount->update_acount($acount);
+    header('Location:');
 
 }
 
@@ -81,8 +90,18 @@ if( isset($_POST['transfert'] ) and
 {
    $amount=(float)htmlspecialchars($_POST['amount']);
    $id=(int)htmlspecialchars($_POST['id']);
+    $acount1= ($id);
    $iddist=(int)htmlspecialchars($_POST['iddist']);
-   $manager_acount->money_transfer($id, $iddist, $amount);
+     
+      $acount2=$manager_acount->select_acount($iddist);
+      $acount1=$manager_acount->select_acount($id);
+
+     $acount1->remove_money($amount);
+   	 $manager_acount->update_acount($acount1);
+   	 $acount2->add_money($amount);
+   	 $manager_acount->update_acount($acount2);
+
+   // $manager_acount->money_transfer($id, $iddist, $amount);
 
  var_dump($_POST);
  header('Location:');

@@ -68,7 +68,26 @@ public function __construct(array $info_acount)
         }
   }
 
-  //hydater------------------------------------------------------------
+  // add money method
+  // -------------------------------------------------------------------------------
+    public function add_money($amount)
+    {
+      if(is_numeric($amount))
+      {
+        $this->sold=$amount +$this->sold;
+      }
+    }
+  // remove money method
+  // -------------------------------------------------------------------------------
+    public function remove_money($amount)
+    {
+      if(is_numeric($amount))
+      {
+        $this->sold= $this->sold -$amount;
+      }
+    }
+
+//hydater------------------------------------------------------------
 //--------------------------------------------------------------------
 public function hydrater(array $info_acount)
 {

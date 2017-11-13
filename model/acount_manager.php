@@ -72,7 +72,7 @@ class Acount_manager
      {
         $id=(int)$info;
   
-         $req=$this->db->prepare('SELECT * FROM acount WHERE id= :id');
+         $req=$this->db->prepare('SELECT id, namecustomer, type, sold FROM acount WHERE id=:id');
          $req->bindValue('id', $id, PDO::PARAM_INT);
          $req->execute();
          $resul=$req->fetch(PDO::FETCH_ASSOC);
@@ -83,66 +83,21 @@ class Acount_manager
            
  
   } 
- // payment(versement) in acount 
-//----------------------------------------------------------------------------------
-  public function payment($id, $amount)
-  {
-    $req=$this->db->prepare('UPDATE acount SET sold = sold + :amount WHERE id=:id');
-    $req->bindValue('id', $id, PDO::PARAM_INT);
-    $req->bindValue('amount', $amount);
-    $req->execute();
-  }
+ 
 
-//withdrawal(retrait) from acount
-//----------------------------------------------------------------------------------
- public function withdrawal($id, $amount)
-  {
-    var_dump($amount);
-    $req=$this->db->prepare('UPDATE acount SET sold= sold-:amount WHERE id=:id');
-    $req->bindValue('id', $id, PDO::PARAM_INT);
-    $req->bindValue('amount', $amount);
-    $req->execute();
-  }
+  
+ public function update_acount($acount)
+ {
+   var_dump($acount->sold());
+    $req=$this->db->prepare('UPDATE acount SET  namecustomer=:namecustomer, sold=:sold, type=:type WHERE id=:id') ;
 
+      $req->bindValue('id', $acount->id(), PDO::PARAM_INT );
+      $req->bindValue('namecustomer', $acount->namecustomer(), PDO::PARAM_STR );
+      $req->bindValue('type', $acount->type(), PDO::PARAM_STR);
+      $req->bindValue('sold', $acount->sold());
+      $req->execute();
 
-// select all acount diffrent of acount(id)
-// ================================================================
-public function searchallotheracount($id)
-{
-    $acc=[];
-       $req=$this->db->prepare('SELECT id,  namecustomer, type,  sold  FROM acount WHERE id!=:id') ;
-       $req->bindValue('id', $id, PDO::PARAM_INT);
-         $req->execute();
-
-        $allacounts=$req->fetchAll(PDO::FETCH_ASSOC);
-          
-
-        foreach ($allacounts as $acount )
-         {
-               
-          
-             $acc[]=new Acount($acount);
-           
-          }
-          
-          return $acc;
-
-
-}
-  public function money_transfer($id, $iddist, $amount)
-  {
-   
-    $req=$this->db->prepare('UPDATE acount SET sold=sold+:amount WHERE id=:iddist');
-    $req->bindValue('iddist', $iddist, PDO::PARAM_INT);
-    $req->bindValue('amount', $amount);
-    $req->execute();
-    $req2=$this->db->prepare('UPDATE acount SET sold=sold-:amount WHERE id=:id');
-    $req2->bindValue('id', $id, PDO::PARAM_INT);
-    $req2->bindValue('amount', $amount);
-    $req2->execute();
-
-  }
-
+ }
 
 
  public function setDb($db)
